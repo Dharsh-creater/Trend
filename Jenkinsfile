@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_REPO = 'vennilavan12/trend-prod'
+        DOCKER_HUB_REPO = 'dharsh177/trend-prod'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
 
