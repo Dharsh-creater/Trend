@@ -44,13 +44,10 @@ pipeline {
 
         stage('Deploy to EKS') {
             steps {
-                // Uses the kubeconfig file credential to update the deployment in EKS
-                withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG')]) {
-                    sh '''
-                      export KUBECONFIG=$KUBECONFIG
-                      kubectl set image deployment/trend-deployment trend-container=${DOCKER_HUB_REPO}:${IMAGE_TAG} --namespace=default
-                    '''
-                }
+                // Deploy to EKS using kubectl (kubeconfig already configured for jenkins user)
+                sh '''
+                  kubectl set image deployment/trend-deployment trend-container=${DOCKER_HUB_REPO}:${IMAGE_TAG} --namespace=default
+                '''
             }
         }
 
@@ -74,4 +71,4 @@ pipeline {
             echo 'Pipeline failed! Check the logs for details.'
         }
     }
-}   
+}
