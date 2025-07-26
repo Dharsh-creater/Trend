@@ -10,7 +10,7 @@ pipeline {
         stage('Clone Repo') {
             steps {
                 // Clones the main branch from your GitHub repository
-                git branch: 'main', url: 'https://github.com/Vennilavan12/Trend.git'
+                git branch: 'main', url: 'https://github.com/Dharsh-creater/Trend.git'
             }
         }
 
